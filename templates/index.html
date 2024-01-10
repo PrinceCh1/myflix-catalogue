@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello User</title>
+</head>
+<body>
+    {% if username %}
+        <p>Hello, {{ username }}!</p>
+        <a href="logout" target="_blank">Log Out</a>
+    {% else %}
+        <p>Hello, Guest!</p>
+        <button onclick="location.href='register'" type="button">
+         Sign Up</button>
+        <a href="login" target="_blank">Log In</a>
+    {% endif %}
+</body>
+</html>

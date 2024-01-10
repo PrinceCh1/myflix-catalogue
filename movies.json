@@ -1,0 +1,129 @@
+{
+"movies": [
+  {
+    "id": 1,
+    "title": "Great Expectations",
+    "description": "Very cool movie! Very old film! Expect greatness",
+    "genre": [
+      "Adventure",
+      "Drama",
+      "Mystery"
+    ],
+    "release_date": "1946-12-16",
+    "director(s)": "David Lean",
+    "actor(s)": [
+      "John Mills",
+      "Valerie Hobson",
+      "Tony Wager"
+    ],
+    "duration": "PT1H58M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-b6a1b634-dd6f-49b1-a5c4-7bdc25f14310\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-b6a1b634-dd6f-49b1-a5c4-7bdc25f14310\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/great_expectations.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Alice's Wonderland",
+    "description": "Very cool movie, It's wonderful!",
+    "genre": [
+      "Animation",
+      "Comedy",
+      "Shorts"
+    ],
+    "release_date": "1923-09-16",
+    "director(s)": [
+      "Walt Disney",
+      "Hugh Harman",
+      "Carman Maxwell"
+    ],
+    "actor(s)": [
+      "Virginia Davis",
+      "Walt Disney",
+      "Hugh Harman"
+    ],
+    "duration": "PT0H12M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-bad789d6-f52f-49eb-8483-12d7a9b13df2\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-bad789d6-f52f-49eb-8483-12d7a9b13df2\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/alices_wonderland.jpg"
+  },
+  {
+    "id": 3,
+    "title": "The Three Stooges",
+    "description": "Compilation of live action segments from \"The New 3 Stooges\" cartoon produced in 1965",
+    "genre": "Comedy",
+    "release_date": "2005-11-02",
+    "director(s)": "Ed Bernds",
+    "actor(s)": [
+      "Moe Howard",
+      "Larry Fine",
+      "Joe DeRita",
+      "Emil Sitka",
+      "Margaret Kerry",
+      "Jeffrey Maurer",
+      "Cary Brown",
+      "Tina Brown",
+      "Bill Brauer"
+    ],
+    "duration": "PT0H54M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-4d723c87-61a7-4084-ac15-b6352e390071\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-4d723c87-61a7-4084-ac15-b6352e390071\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/three_stooges.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Superman",
+    "description": "The Man of Steel fights a mad scientist who is destroying Metropolis with an energy cannon.",
+    "genre": [
+      "Animation",
+      "Short",
+      "Action"
+    ],
+    "release_date": "1941-09-26",
+    "director(s)": [
+      "Dave Fleischer",
+      "Steve Muffati"
+    ],
+    "actor(s)": [
+      "Bud Collyer",
+      "Joan Alexander",
+      "Jackson Beck"
+    ],
+    "duration": "PT0H10M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-6d5f31fd-32f0-49f1-8bbb-8d41f8c03bd9\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-6d5f31fd-32f0-49f1-8bbb-8d41f8c03bd9\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/superman.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Daffy Duck and the Dinosaur",
+    "description": "Very cool movie, You would like it",
+    "genre": [
+      "Animation",
+      "Short",
+      "Adventure"
+    ],
+    "release_date": "1939-04-22",
+    "director(s)": "Chuck Jones",
+    "actor(s)": [
+      "Mel Blanc",
+      "Jack Lescoulie"
+    ],
+    "duration": "PT0H8M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-b9c13483-55fc-4f54-9805-c1b680270ae6\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-b9c13483-55fc-4f54-9805-c1b680270ae6\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/daffy_duck.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Steamboat Willie",
+    "description": "Mickey Mouse is a mischievous deckhand on a riverboat that is under the command of the tyrannical Captain Pete.",
+    "genre": "Animation",
+    "release_date": [
+      "1928-05-15",
+      "1929-1-1"
+    ],
+    "director(s)": [
+      "Ub Iwerks"
+    ],
+    "actor(s)": "Walt Disney",
+    "duration": "PT0H8M",
+    "embed_code": "<script id=\"e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-9eac1492-bbb9-41b1-84db-ceead12bff5f\" width=\"100%\" height=\"100%\" src=\"https://player.dacast.com/js/player.js?contentId=e6ff5954-dfb1-0d56-6ade-e6e8d8444778-vod-9eac1492-bbb9-41b1-84db-ceead12bff5f\" class=\"dacast-video\"></script>",
+    "thumbnail": "images/steamboat_willie.jpg"
+  }
+]
+}

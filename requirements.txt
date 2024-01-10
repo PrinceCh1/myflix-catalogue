@@ -1,0 +1,4 @@
+flask
+pymongo[srv]
+flask_pymongo
+dnspython
