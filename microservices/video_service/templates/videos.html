@@ -1,0 +1,48 @@
+<!-- videos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Catalog</title>
+</head>
+  <!-- based on the CSS in this forum https://www.shecodes.io/athena/39603-how-to-place-an-image-inside-a-grid-box-in-css-->
+<style>
+.grid-container {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-template-areas:
+    "image1 image1 image1"
+    "text text text";
+}
+
+.image1 {
+  grid-area: image1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+<body>
+    <h1>Video Catalog</h1>
+    <div class="grid-container">
+        {% for video in videos %}
+                <div>
+                    <h2>{{ video.title }}</h2>
+                    <a href="{{ url_for('video.video_player', video_id=video.id) }}">
+                        <img src="{{ url_for('static', filename=video.thumbnail) }}" style="width:100%" alt="{{ video.title }} Thumbnail" >
+                    </a>
+                    <!-- Other video details... -->
+                    {{ video.release_date }}
+                    {{ video.duration }}
+                </div>
+
+        {% endfor %}
+    </div>
+</body>
+</html>
+

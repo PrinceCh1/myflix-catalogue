@@ -2,3 +2,5 @@ flask
 pymongo[srv]
 flask_pymongo
 dnspython
+flask-restful
+flask_jwt_extended
