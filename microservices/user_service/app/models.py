@@ -1,5 +1,6 @@
 from flask_pymongo import ObjectId
 
+
 class User:
     def __init__(self, db, username, email, password):
         self.db = db

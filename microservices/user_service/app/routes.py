@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, session, request, Blueprint
+from flask import Flask, jsonify, render_template, request, Blueprint
 from datetime import datetime, timezone, timedelta
 from microservices.user_service.app.models import User
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
@@ -6,6 +6,10 @@ import db
 
 user_bp = Blueprint('user', __name__)
 authentication_bp = Blueprint('authenticate', __name__)
+
+app = Flask(__name__)
+app.config["JWT_SECRET_KEY"] = "05527cbaf81fadfb66a1ab0a5b68394bb20a8d00"
+jwt = JWTManager(app)
 
 
 def stringify_data(data, include_fields=None):
@@ -21,26 +25,21 @@ def stringify_data(data, include_fields=None):
     return filtered_data
 
 
-@user_bp.before_request
-@authentication_bp.before_request
-def activity_checker():
-    # if activity has been too long between requests log them out.
-    if 'user_id' in session and 'last_activity' in session:
-        last_activity_time = session['last_activity']
-
-        # Convert last_activity_time to an aware datetime in UTC
-        last_activity_time = last_activity_time.replace(tzinfo=timezone.utc)
-
-        # If last logged activity time is greater than 30 minutes, then remove the user
-        if datetime.now(timezone.utc) - last_activity_time > timedelta(minutes=30):
-            session.pop('user_id', None)
-
-
 # Route to get all users
 @user_bp.route('/', methods=['GET'])
+@jwt_required(optional=True)
 def get_all_users():
     users = [stringify_data(i, include_fields=['username', 'email']) for i in db.user_collection.find()]
     return jsonify(users)
+
+
+# Authentication for routes in user_bp
+@user_bp.before_request
+@authentication_bp.before_request
+@jwt_required(optional=True)
+def authenticate_user():
+    if not get_jwt_identity():
+        return 'Authentication required', 401
 
 
 # Route to get specific users
@@ -58,8 +57,7 @@ def get_user(username):
 
 @authentication_bp.route('/register/', methods=['GET', 'POST'])
 def register():
-    # update user activity
-    session['last_activity'] = datetime.utcnow()
+
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
@@ -78,17 +76,17 @@ def register():
         # Insert the new user into the database
         user_id = new_user.save_to_db()
 
-        # Set user session
-        session['user_id'] = str(user_id)
-        return 'Registration successful. You are now logged in.'
+        # Create JWT token for the registered user
+        access_token = create_access_token(identity=str(user_id))
+
+        return jsonify(access_token=access_token), 200
 
     return render_template('register.html')
 
 
 @authentication_bp.route('/login/', methods=['GET', 'POST'])
 def login():
-    # update user activity
-    session['last_activity'] = datetime.utcnow()
+
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -96,29 +94,30 @@ def login():
         # Check if the username and password match
         found_user = User.username_matches_password(db, username, password)
         if found_user:
-            # Set user session
-            session['user_id'] = str(found_user['_id'])
-            return render_template('login_correct.html', username=username)
+            # Create JWT token for the authenticated user
+            access_token = create_access_token(identity=str(found_user['_id']))
 
-        return 'Invalid username or password. Please try again.'
+            # Return the token to the client
+            return jsonify(access_token=access_token), 200
+
+        return 'Invalid username or password. Please try again.', 401
 
     return render_template('login.html')
 
 
 @authentication_bp.route('/')
+@jwt_required(optional=True)
 def home():
-    # update user activity
-    session['last_activity'] = datetime.utcnow()
-    if 'user_id' in session:
-        user_id = session['user_id']
-        username = User.find_name_by_id(db, user_id)
-        return render_template('index.html', username=username)
+    current_user_id = get_jwt_identity()
+    print("Current user id: ", current_user_id)
+
+    if current_user_id:
+        username = User.find_name_by_id(current_user_id)
     else:
-        return render_template('index.html', username=None)
+        username = None
+    return render_template('index.html', username=username)
 
 
 @authentication_bp.route('/logout/')
 def logout():
-    # Clear the session
-    session.pop('user_id', None)
     return 'You have been logged out.'
